@@ -1,0 +1,72 @@
+/* One typography scale for every research page. Native theme owns neutral colors. */
+[data-testid="stAppViewContainer"] {font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;}
+.block-container {max-width:1360px;padding:2.6rem 2.8rem 4rem;}
+h1 {font-size:34px !important;font-weight:750 !important;letter-spacing:-.035em;line-height:1.4 !important;}
+h2 {font-size:26px !important;line-height:1.5 !important;}
+h3 {font-size:23px !important;line-height:1.5 !important;}
+h4 {font-size:18px !important;}
+[data-testid="stMarkdownContainer"] p,[data-testid="stMarkdownContainer"] li {font-size:16px;line-height:1.85;}
+[data-testid="stCaptionContainer"] p {font-size:14px;line-height:1.65;overflow-wrap:anywhere;}
+[data-testid="stWidgetLabel"] p {font-size:17px;font-weight:600;line-height:1.6;}
+[data-testid="stTextInput"] input,[data-testid="stTextArea"] textarea,[data-testid="stChatInput"] textarea {font-size:16px;line-height:1.8;}
+[data-testid="stText"] {font-size:16px;line-height:1.85;white-space:pre-wrap;}
+[data-testid="stMarkdownContainer"] code {font-size:14px;}
+[data-testid="stSidebar"] {border-right:1px solid rgba(108,130,145,.2);}
+[data-testid="stSidebar"] hr {margin:16px 0;border-color:rgba(108,130,145,.18);}
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {font-size:14px;}
+[data-testid="stSidebar"] [data-testid="stRadio"] label {min-height:46px;padding:8px 12px;border:1px solid transparent;border-radius:12px;align-items:center;}
+[data-testid="stSidebar"] [data-testid="stRadio"] label p {font-size:19px;line-height:1.55;font-weight:500;}
+[data-testid="stSidebar"] [data-testid="stRadio"] [role="radiogroup"] {gap:4px;}
+[data-testid="stSidebar"] [data-testid="stRadio"] label:hover {background:rgba(58,128,133,.1);}
+[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) {background:#dfefeb;border-color:#bdd9d1;box-shadow:inset 3px 0 #397a73;}
+[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) p {color:#245850 !important;font-weight:700;}
+[data-testid="stSidebar"] [data-testid="stRadio"] label:focus-within {outline:2px solid #639c94;outline-offset:2px;}
+.brand {display:flex;align-items:center;gap:12px;padding:4px 0 8px;}
+.brand-mark {display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(140deg,#234951,#48857e);color:white;font-weight:750;font-size:28px;position:relative;box-shadow:0 5px 16px #244e5122;}
+.brand-mark span {position:absolute;right:6px;bottom:4px;color:#c9dfb8;}
+.brand-name {font-size:25px;font-weight:750;letter-spacing:-.7px;}
+.hero {background:radial-gradient(ellipse at 100% 0,rgba(150,184,159,.3),transparent 60%),linear-gradient(120deg,#203f4a,#3d716e);color:#fff;border:1px solid #638f8a;border-radius:24px;padding:32px 36px;margin-bottom:22px;box-shadow:0 10px 28px #23464d18;}
+.hero h1 {color:#fff;font-size:34px !important;margin:12px 0;}
+.hero p {color:#e1ece9;max-width:850px;}
+.eyebrow {font-size:14px;letter-spacing:2px;color:#c4ddd4;font-weight:600;}
+.hero-tags {display:flex;flex-wrap:wrap;gap:9px;margin-top:22px;}
+.hero-tags span {border:1px solid #ffffff38;border-radius:24px;background:#ffffff10;color:#e6f0ec;padding:5px 12px;font-size:13px;}
+[data-testid="stMetric"] {border:1px solid rgba(108,130,145,.2);border-top:3px solid #87aba2;border-radius:17px;padding:18px 22px;box-shadow:0 5px 20px #203f4a07;}
+[data-testid="stMetricValue"] {font-size:32px;font-weight:700;}
+[data-testid="stMetricLabel"] p {font-size:16px;font-weight:600;}
+[data-testid="stVerticalBlockBorderWrapper"]>div {border-radius:17px !important;border-color:rgba(108,130,145,.2) !important;}
+[data-testid="stExpander"] details {border-radius:13px;border-color:rgba(108,130,145,.2);}
+[data-testid="stExpander"] summary {padding:12px 15px;}
+.stButton button,[data-testid="stDownloadButton"] button {border-radius:11px;min-height:42px;padding:8px 18px;transition:box-shadow .15s;}
+.stButton button p,[data-testid="stDownloadButton"] button p {font-size:16px;line-height:1.5;}
+.stButton button:hover,[data-testid="stDownloadButton"] button:hover {box-shadow:0 5px 15px #274d4b18;border-color:#719e95;}
+button[kind="primary"] {background:#397a73 !important;border-color:#397a73 !important;color:#fff !important;}
+button[kind="primary"] p {color:#fff !important;}
+button[kind="primary"]:disabled {opacity:.5;}
+[data-testid="stTextInput"] [data-baseweb="input"],[data-testid="stTextArea"] [data-baseweb="textarea"],[data-testid="stSelectbox"] [data-baseweb="select"]>div,[data-testid="stMultiSelect"] [data-baseweb="select"]>div {border-radius:11px;}
+[data-testid="stFileUploaderDropzone"] {border:1px dashed #87aba2;border-radius:16px;padding:22px;}
+[data-testid="stChatMessage"] {padding:20px;border-radius:17px;border:1px solid rgba(108,130,145,.18);}
+@media(min-width:900px) {[data-testid="stSidebar"][aria-expanded="true"] {width:308px !important;min-width:308px !important;max-width:308px !important;}}
+@media(max-width:700px) {.block-container {padding:2rem 1rem;} .hero {padding:24px 22px;} .hero h1,h1 {font-size:27px !important;}}
+@media(prefers-reduced-motion:reduce) {.stButton button {transition:none;}}
+
+/* Keep card labels and form controls readable in the app's narrow preview. */
+@media(max-width:1100px) {
+    .block-container {padding-left:1.4rem;padding-right:1.4rem;}
+    [data-testid="stMain"] [data-testid="stHorizontalBlock"] {flex-wrap:wrap;}
+    [data-testid="stMain"] [data-testid="stHorizontalBlock"]>[data-testid="stColumn"] {flex:1 1 100%;width:100%;min-width:0;}
+    [data-testid="stMain"] [data-testid="stHorizontalBlock"]>[data-testid="stColumn"]:has([data-testid="stMetric"]) {flex:1 1 calc(50% - 1rem);width:calc(50% - 1rem);min-width:0;}
+    [data-testid="stMetric"] {padding:16px;}
+}
+
+[data-testid="stMetricValue"] p {font-size:30px !important;font-weight:700;line-height:1.35;}
+[data-testid="stSidebar"] [data-testid="stRadio"] label {width:100%;}
+
+.process-list {border-left:2px solid #8eb7ac;margin:8px 0 8px 9px;padding-left:22px;}
+.process-step {position:relative;padding:4px 0 19px;}
+.process-step:before {content:"";position:absolute;left:-29px;top:12px;width:11px;height:11px;background:#397a73;border:2px solid #e5f0ea;border-radius:50%;}
+.process-step.failed:before {background:#b45252;}
+.process-step.warn:before {background:#a77b32;}
+.process-title {font-size:17px;font-weight:650;line-height:1.6;}
+.process-detail {font-size:15px;line-height:1.7;opacity:.85;margin-top:3px;}
+.process-badge {font-size:13px;font-weight:500;margin-left:10px;}
