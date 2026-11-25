@@ -34,7 +34,9 @@ def render_process(trace):
         st.caption('展示实际执行摘要，不是模型内部完整思维链。')
 
 def run_visible(agent,question,selected,history=None,compare=False):
-    with st.status('正在分析论文…',expanded=True) as status:
+    phase = st.empty()
+    # Streamlit treats a new status label as a new expander and resets its open state.
+    with st.status('分析进度', expanded=True) as status:
         live=st.empty()
         completed=[]
         def update(event):
@@ -46,12 +48,14 @@ def run_visible(agent,question,selected,history=None,compare=False):
                     icon='✕' if item.get('status')=='失败' else '!' if item.get('status')=='需核对' else '✓'
                     st.write(f'{icon} **{t}** · {d}')
                 if event.get('status')=='进行中': st.write(f'⏳ **{title}** · {detail}')
-            status.update(label=title)
+            phase.caption(title)
         try:
             result=agent.run(question,selected,history,compare,on_event=update)
         except Exception:
-            status.update(label='处理未完成，请检查下方提示',state='error',expanded=True)
+            phase.caption('处理未完成，请检查下方提示')
+            status.update(state='error')
             raise
         warning=any(t.get('status') in ('失败','需核对') for t in result['trace'])
-        status.update(label='处理完成 · 部分步骤需核对' if warning else '处理完成',state='complete',expanded=False)
+        phase.caption('处理完成 · 部分步骤需核对' if warning else '处理完成')
+        status.update(state='complete')
         return result

@@ -1,6 +1,7 @@
 /* One typography scale for every research page. Native theme owns neutral colors. */
 [data-testid="stAppViewContainer"] {font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;}
-.block-container {max-width:1360px;padding:2.6rem 2.8rem 4rem;}
+/* Streamlit reserves the top inset for its toolbar. */
+.block-container {max-width:1360px;padding-inline:2.8rem;padding-bottom:4rem;}
 h1 {font-size:34px !important;font-weight:750 !important;letter-spacing:-.035em;line-height:1.4 !important;}
 h2 {font-size:26px !important;line-height:1.5 !important;}
 h3 {font-size:23px !important;line-height:1.5 !important;}
@@ -12,15 +13,85 @@ h4 {font-size:18px !important;}
 [data-testid="stText"] {font-size:16px;line-height:1.85;white-space:pre-wrap;}
 [data-testid="stMarkdownContainer"] code {font-size:14px;}
 [data-testid="stSidebar"] {border-right:1px solid rgba(108,130,145,.2);}
-[data-testid="stSidebar"] hr {margin:16px 0;border-color:rgba(108,130,145,.18);}
+[data-testid="stSidebar"] hr {margin:10px 0;border-color:rgba(108,130,145,.18);}
 [data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {font-size:14px;}
 [data-testid="stSidebar"] [data-testid="stRadio"] label {min-height:46px;padding:8px 12px;border:1px solid transparent;border-radius:12px;align-items:center;}
 [data-testid="stSidebar"] [data-testid="stRadio"] label p {font-size:19px;line-height:1.55;font-weight:500;}
-[data-testid="stSidebar"] [data-testid="stRadio"] [role="radiogroup"] {gap:4px;}
+[data-testid="stSidebar"] [data-testid="stRadio"] [role="radiogroup"] {gap:10px;}
 [data-testid="stSidebar"] [data-testid="stRadio"] label:hover {background:rgba(58,128,133,.1);}
 [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) {background:#dfefeb;border-color:#bdd9d1;box-shadow:inset 3px 0 #397a73;}
 [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) p {color:#245850 !important;font-weight:700;}
-[data-testid="stSidebar"] [data-testid="stRadio"] label:focus-within {outline:2px solid #639c94;outline-offset:2px;}
+[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:focus-visible) {outline:2px solid #639c94;outline-offset:2px;}
+.st-key-toolbar_zh {display:none;}
+[data-testid="stSidebar"] .st-key-workspace_settings button {justify-content:flex-start;gap:8px;min-height:44px;padding-inline:12px;border-radius:12px;color:#42605f;}
+[data-testid="stSidebar"] .st-key-workspace_settings button > div {flex:0 1 auto;justify-content:flex-start;}
+[data-testid="stSidebar"] .st-key-workspace_settings button::before {content:"⚙" / "";display:grid;place-items:center;flex:0 0 16px;font-size:18px;line-height:1;}
+[data-testid="stSidebar"] .st-key-workspace_settings button[kind="secondary"] {background:#dfefeb;border-color:#bdd9d1;color:#245850;}
+[data-testid="stSidebar"] .st-key-workspace_settings button:focus-visible {outline:2px solid #639c94;outline-offset:2px;}
+
+/* Share one visual treatment across Streamlit's segmented controls. */
+[data-testid="stButtonGroup"] > [role="radiogroup"]:has(> button[data-variant="segmented_control"]) {
+    gap:4px;
+    padding:4px;
+    max-width:100%;
+    border:1px solid #d6e3de;
+    border-radius:16px;
+    background:#eaf1ee;
+}
+[data-testid="stButtonGroup"] > [role="radiogroup"] > button[data-variant="segmented_control"] {
+    min-width:0;
+    min-height:40px;
+    margin:0;
+    padding:7px 16px;
+    border:1px solid transparent;
+    border-radius:11px;
+    background:transparent;
+    color:#365452;
+    transition:background-color .16s ease,color .16s ease,box-shadow .16s ease;
+}
+[data-testid="stButtonGroup"] > [role="radiogroup"] > button[data-variant="segmented_control"] p {
+    color:inherit;
+    font-size:15px;
+    line-height:1.45;
+    font-weight:600;
+    white-space:normal;
+    text-wrap:balance;
+}
+[data-testid="stButtonGroup"] > [role="radiogroup"] > button[data-variant="segmented_control"][aria-checked="true"] {
+    background:#356f68;
+    color:#fff;
+    box-shadow:0 2px 5px #234e4633;
+}
+@media (hover:hover) {
+    [data-testid="stButtonGroup"] > [role="radiogroup"] > button[data-variant="segmented_control"][aria-checked="false"]:hover:not(:disabled) {
+        background:#dcebe5;
+        color:#254f48;
+    }
+}
+[data-testid="stButtonGroup"] > [role="radiogroup"] > button[data-variant="segmented_control"]:is(:focus-visible,[data-focus-visible]) {
+    outline:2px solid #316e63;
+    outline-offset:1px;
+}
+@media (max-width:520px) {
+    [data-testid="stElementContainer"]:has(> [data-testid="stButtonGroup"] > [role="radiogroup"] > button[data-variant="segmented_control"]) {
+        width:100%;
+    }
+    [data-testid="stButtonGroup"] > [role="radiogroup"]:has(> button[data-variant="segmented_control"]) {
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+    [data-testid="stButtonGroup"] > [role="radiogroup"]:has(> button[data-variant="segmented_control"]:nth-child(2):last-child) {
+        grid-template-columns:repeat(2,minmax(0,auto));
+    }
+    [data-testid="stButtonGroup"] > [role="radiogroup"] > button[data-variant="segmented_control"] {
+        min-height:44px;
+        padding-inline:8px;
+    }
+}
+@media (prefers-reduced-motion:reduce) {
+    [data-testid="stButtonGroup"] > [role="radiogroup"] > button[data-variant="segmented_control"] {transition:none;}
+}
+
 .brand {display:flex;align-items:center;gap:12px;padding:4px 0 8px;}
 .brand-mark {display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(140deg,#234951,#48857e);color:white;font-weight:750;font-size:28px;position:relative;box-shadow:0 5px 16px #244e5122;}
 .brand-mark span {position:absolute;right:6px;bottom:4px;color:#c9dfb8;}
@@ -35,6 +106,11 @@ h4 {font-size:18px !important;}
 [data-testid="stMetricValue"] {font-size:32px;font-weight:700;}
 [data-testid="stMetricLabel"] p {font-size:16px;font-weight:600;}
 [data-testid="stVerticalBlockBorderWrapper"]>div {border-radius:17px !important;border-color:rgba(108,130,145,.2) !important;}
+/* Keep the three starter cards equal-height and pin their buttons to the bottom. */
+.st-key-starter_cards [data-testid="stColumn"]>div {height:100%;}
+.st-key-starter_cards [data-testid="stVerticalBlockBorderWrapper"] {height:100%;}
+.st-key-starter_cards [data-testid="stVerticalBlockBorderWrapper"]>div {display:flex;flex-direction:column;height:100%;}
+.st-key-starter_cards [data-testid="stButton"] {margin-top:auto;}
 [data-testid="stExpander"] details {border-radius:13px;border-color:rgba(108,130,145,.2);}
 [data-testid="stExpander"] summary {padding:12px 15px;}
 .stButton button,[data-testid="stDownloadButton"] button {border-radius:11px;min-height:42px;padding:8px 18px;transition:box-shadow .15s;}
@@ -44,10 +120,12 @@ button[kind="primary"] {background:#397a73 !important;border-color:#397a73 !impo
 button[kind="primary"] p {color:#fff !important;}
 button[kind="primary"]:disabled {opacity:.5;}
 [data-testid="stTextInput"] [data-baseweb="input"],[data-testid="stTextArea"] [data-baseweb="textarea"],[data-testid="stSelectbox"] [data-baseweb="select"]>div,[data-testid="stMultiSelect"] [data-baseweb="select"]>div {border-radius:11px;}
+/* Keep the counter, drop Streamlit's generic "Press Enter ..." hint. */
+[data-testid="InputInstructions"]>span:first-child:not(:last-child) {display:none !important;}
 [data-testid="stFileUploaderDropzone"] {border:1px dashed #87aba2;border-radius:16px;padding:22px;}
 [data-testid="stChatMessage"] {padding:20px;border-radius:17px;border:1px solid rgba(108,130,145,.18);}
 @media(min-width:900px) {[data-testid="stSidebar"][aria-expanded="true"] {width:308px !important;min-width:308px !important;max-width:308px !important;}}
-@media(max-width:700px) {.block-container {padding:2rem 1rem;} .hero {padding:24px 22px;} .hero h1,h1 {font-size:27px !important;}}
+@media(max-width:700px) {.block-container {padding-inline:1rem;padding-bottom:2rem;} .hero {padding:24px 22px;} .hero h1,h1 {font-size:27px !important;}}
 @media(prefers-reduced-motion:reduce) {.stButton button {transition:none;}}
 
 /* Keep card labels and form controls readable in the app's narrow preview. */
